@@ -1,10 +1,18 @@
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 
 export default function Footer() {
   const handleNavClick = (href: string) => {
     const element = document.getElementById(href.slice(1));
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -24,7 +32,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm opacity-90 leading-relaxed">
-              Nurturing young minds with quality education and holistic development in the heart of Jharkhand.
+              Nurturing young minds with quality education and holistic
+              development in the heart of Jharkhand.
             </p>
             <div className="flex gap-4">
               <Facebook className="h-5 w-5 hover:opacity-75 cursor-pointer" />
@@ -39,40 +48,40 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <button 
-                  onClick={() => handleNavClick('#about')} 
+                <button
+                  onClick={() => handleNavClick("#about")}
                   className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
                 >
                   About Us
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('#academics')} 
+                <button
+                  onClick={() => handleNavClick("#academics")}
                   className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
                 >
                   Academics
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('#facilities')} 
+                <button
+                  onClick={() => handleNavClick("#facilities")}
                   className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
                 >
                   Facilities
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('#gallery')} 
+                <button
+                  onClick={() => handleNavClick("#gallery")}
                   className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
                 >
                   Gallery
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('#contact')} 
+                <button
+                  onClick={() => handleNavClick("#contact")}
                   className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
                 >
                   Contact
@@ -85,12 +94,24 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Our Programs</h4>
             <ul className="space-y-2">
-              <li><span className="text-sm opacity-90">Nursery</span></li>
-              <li><span className="text-sm opacity-90">Kindergarten</span></li>
-              <li><span className="text-sm opacity-90">Primary (I-V)</span></li>
-              <li><span className="text-sm opacity-90">Middle (VI-VIII)</span></li>
-              <li><span className="text-sm opacity-90">Library</span></li>
-              <li><span className="text-sm opacity-90">Art & Music</span></li>
+              <li>
+                <span className="text-sm opacity-90">Nursery</span>
+              </li>
+              <li>
+                <span className="text-sm opacity-90">Kindergarten</span>
+              </li>
+              <li>
+                <span className="text-sm opacity-90">Primary (I-V)</span>
+              </li>
+              <li>
+                <span className="text-sm opacity-90">Middle (VI-VIII)</span>
+              </li>
+              <li>
+                <span className="text-sm opacity-90">Library</span>
+              </li>
+              <li>
+                <span className="text-sm opacity-90">Art & Music</span>
+              </li>
             </ul>
           </div>
 
@@ -119,7 +140,8 @@ export default function Footer() {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-sm opacity-90">
-            © {new Date().getFullYear()} Little Angel Public School. All rights reserved.
+            © {new Date().getFullYear()} Little Angel Public School. All rights
+            reserved.
           </p>
         </div>
       </div>

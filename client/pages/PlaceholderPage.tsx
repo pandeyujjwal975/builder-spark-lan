@@ -5,8 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function PlaceholderPage() {
   const location = useLocation();
-  const pageName = location.pathname.slice(1).charAt(0).toUpperCase() + location.pathname.slice(2);
-  
+  const pageName =
+    location.pathname.slice(1).charAt(0).toUpperCase() +
+    location.pathname.slice(2);
+
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="container mx-auto px-4">
@@ -22,12 +24,13 @@ export default function PlaceholderPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               <p className="text-lg text-gray-600">
-                We're working hard to bring you detailed information about our school's {pageName.toLowerCase()} section. 
-                This page will be available soon with comprehensive content.
+                We're working hard to bring you detailed information about our
+                school's {pageName.toLowerCase()} section. This page will be
+                available soon with comprehensive content.
               </p>
               <p className="text-gray-500">
-                In the meantime, feel free to explore other sections of our website or contact us directly 
-                for any information you need.
+                In the meantime, feel free to explore other sections of our
+                website or contact us directly for any information you need.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button asChild>
@@ -42,10 +45,11 @@ export default function PlaceholderPage() {
               </div>
             </CardContent>
           </Card>
-          
+
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500">
-              Want to continue building this page? Simply ask our AI assistant to create content for the {pageName.toLowerCase()} section!
+              Want to continue building this page? Simply ask our AI assistant
+              to create content for the {pageName.toLowerCase()} section!
             </p>
           </div>
         </div>

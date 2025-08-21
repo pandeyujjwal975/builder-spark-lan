@@ -9,7 +9,7 @@ export default function Header() {
     setIsMenuOpen(false);
     const element = document.getElementById(href.slice(1));
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -41,7 +41,10 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and School Name */}
-          <button onClick={() => handleNavClick('#home')} className="flex items-center gap-3">
+          <button
+            onClick={() => handleNavClick("#home")}
+            className="flex items-center gap-3"
+          >
             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">
               LA
             </div>
@@ -53,49 +56,51 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <button 
-              onClick={() => handleNavClick('#home')} 
+            <button
+              onClick={() => handleNavClick("#home")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Home
             </button>
-            <button 
-              onClick={() => handleNavClick('#about')} 
+            <button
+              onClick={() => handleNavClick("#about")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               About
             </button>
-            <button 
-              onClick={() => handleNavClick('#academics')} 
+            <button
+              onClick={() => handleNavClick("#academics")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Academics
             </button>
-            <button 
-              onClick={() => handleNavClick('#facilities')} 
+            <button
+              onClick={() => handleNavClick("#facilities")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Facilities
             </button>
-            <button 
-              onClick={() => handleNavClick('#gallery')} 
+            <button
+              onClick={() => handleNavClick("#gallery")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Gallery
             </button>
-            <button 
-              onClick={() => handleNavClick('#admissions')} 
+            <button
+              onClick={() => handleNavClick("#admissions")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Admissions
             </button>
-            <button 
-              onClick={() => handleNavClick('#contact')} 
+            <button
+              onClick={() => handleNavClick("#contact")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Contact
             </button>
-            <Button onClick={() => handleNavClick('#admissions')}>Apply Now</Button>
+            <Button onClick={() => handleNavClick("#admissions")}>
+              Apply Now
+            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -103,7 +108,11 @@ export default function Header() {
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
 
@@ -111,49 +120,54 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t pt-4">
             <div className="flex flex-col gap-4">
-              <button 
-                onClick={() => handleNavClick('#home')} 
+              <button
+                onClick={() => handleNavClick("#home")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Home
               </button>
-              <button 
-                onClick={() => handleNavClick('#about')} 
+              <button
+                onClick={() => handleNavClick("#about")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 About
               </button>
-              <button 
-                onClick={() => handleNavClick('#academics')} 
+              <button
+                onClick={() => handleNavClick("#academics")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Academics
               </button>
-              <button 
-                onClick={() => handleNavClick('#facilities')} 
+              <button
+                onClick={() => handleNavClick("#facilities")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Facilities
               </button>
-              <button 
-                onClick={() => handleNavClick('#gallery')} 
+              <button
+                onClick={() => handleNavClick("#gallery")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Gallery
               </button>
-              <button 
-                onClick={() => handleNavClick('#admissions')} 
+              <button
+                onClick={() => handleNavClick("#admissions")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Admissions
               </button>
-              <button 
-                onClick={() => handleNavClick('#contact')} 
+              <button
+                onClick={() => handleNavClick("#contact")}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Contact
               </button>
-              <Button className="w-fit" onClick={() => handleNavClick('#admissions')}>Apply Now</Button>
+              <Button
+                className="w-fit"
+                onClick={() => handleNavClick("#admissions")}
+              >
+                Apply Now
+              </Button>
             </div>
           </nav>
         )}
