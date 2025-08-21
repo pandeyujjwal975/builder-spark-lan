@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   GraduationCap, 
   Users, 
@@ -22,10 +23,19 @@ import {
   Clock,
   Baby,
   Smile,
-  Gamepad2
+  Gamepad2,
+  FileText,
+  Calendar
 } from "lucide-react";
 
 export default function Index() {
+  const handleNavClick = (href: string) => {
+    const element = document.getElementById(href.slice(1));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -48,12 +58,12 @@ export default function Index() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8">
+                <Button size="lg" className="text-lg px-8" onClick={() => handleNavClick('#admissions')}>
                   Apply for Admission
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button variant="outline" size="lg" className="text-lg px-8">
-                  <a href="#contact">Contact Us</a>
+                  <button onClick={() => handleNavClick('#contact')}>Contact Us</button>
                 </Button>
               </div>
 
@@ -379,55 +389,194 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Admissions Section */}
+      <section id="admissions" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Admission Process</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Join our school family! Fill out the admission form below to start the enrollment process for your child.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center mb-8">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <FileText className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-semibold">Admission Application Form</h3>
+                  <p className="text-gray-600 mt-2">Please fill in all the required information about your child</p>
+                </div>
+
+                <form className="space-y-6">
+                  {/* Student Information */}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-primary">Student Information</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="studentName">Student's Full Name *</Label>
+                        <Input id="studentName" placeholder="Enter student's full name" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="dateOfBirth">Date of Birth *</Label>
+                        <Input id="dateOfBirth" type="date" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="gender">Gender *</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select gender" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="male">Male</SelectItem>
+                            <SelectItem value="female">Female</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="admissionClass">Class Applying For *</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select class" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="nursery">Nursery</SelectItem>
+                            <SelectItem value="kg">Kindergarten (KG)</SelectItem>
+                            <SelectItem value="class1">Class I</SelectItem>
+                            <SelectItem value="class2">Class II</SelectItem>
+                            <SelectItem value="class3">Class III</SelectItem>
+                            <SelectItem value="class4">Class IV</SelectItem>
+                            <SelectItem value="class5">Class V</SelectItem>
+                            <SelectItem value="class6">Class VI</SelectItem>
+                            <SelectItem value="class7">Class VII</SelectItem>
+                            <SelectItem value="class8">Class VIII</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Parent Information */}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-primary">Parent/Guardian Information</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="fatherName">Father's Name *</Label>
+                        <Input id="fatherName" placeholder="Enter father's full name" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="motherName">Mother's Name *</Label>
+                        <Input id="motherName" placeholder="Enter mother's full name" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="fatherOccupation">Father's Occupation</Label>
+                        <Input id="fatherOccupation" placeholder="Enter father's occupation" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="motherOccupation">Mother's Occupation</Label>
+                        <Input id="motherOccupation" placeholder="Enter mother's occupation" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Information */}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-primary">Contact Information</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="primaryPhone">Primary Phone Number *</Label>
+                        <Input id="primaryPhone" type="tel" placeholder="Enter primary phone number" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="alternatePhone">Alternate Phone Number</Label>
+                        <Input id="alternatePhone" type="tel" placeholder="Enter alternate phone number" />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="email">Email Address *</Label>
+                        <Input id="email" type="email" placeholder="Enter email address" required />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="address">Complete Address *</Label>
+                        <Textarea 
+                          id="address" 
+                          placeholder="Enter complete address including city, state, and pin code" 
+                          className="min-h-[80px]"
+                          required 
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Previous School Information */}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-primary">Previous School Information (if applicable)</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="previousSchool">Previous School Name</Label>
+                        <Input id="previousSchool" placeholder="Enter previous school name" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="lastClass">Last Class Attended</Label>
+                        <Input id="lastClass" placeholder="Enter last class attended" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Additional Information */}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-primary">Additional Information</h4>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="specialNeeds">Does your child have any special needs or medical conditions?</Label>
+                        <Textarea 
+                          id="specialNeeds" 
+                          placeholder="Please describe any special needs, allergies, or medical conditions we should be aware of" 
+                          className="min-h-[80px]"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="additionalInfo">Additional Comments</Label>
+                        <Textarea 
+                          id="additionalInfo" 
+                          placeholder="Any additional information you would like to share about your child" 
+                          className="min-h-[80px]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-t pt-6">
+                    <div className="text-center space-y-4">
+                      <p className="text-sm text-gray-600">
+                        By submitting this form, you agree to our admission terms and conditions.
+                        Our admission team will contact you within 2-3 working days.
+                      </p>
+                      <Button size="lg" className="px-12">
+                        Submit Admission Form
+                        <FileText className="ml-2 h-5 w-5" />
+                      </Button>
+                    </div>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50">
+      <section id="contact" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We'd love to hear from you! Get in touch for admissions or any questions about our school.
+              Have questions about our school? We'd love to hear from you and provide any information you need.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card>
-              <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-semibold">Send us a Message</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Enter your first name" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Enter your last name" />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="Enter your phone number" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Tell us about your inquiry..." 
-                    className="min-h-[120px]"
-                  />
-                </div>
-                
-                <Button className="w-full">Send Message</Button>
-              </CardContent>
-            </Card>
-
             {/* Contact Information */}
             <div className="space-y-6">
               <Card>
@@ -483,11 +632,47 @@ export default function Index() {
 
               <Card>
                 <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calendar className="h-8 w-8 text-primary" />
+                  </div>
                   <h4 className="text-xl font-semibold mb-4">Visit Our School</h4>
                   <p className="text-gray-600 mb-6">
                     We welcome parents to visit our campus and see our learning environment.
                   </p>
-                  <Button className="w-full">Schedule a Visit</Button>
+                  <p className="text-sm text-gray-500">
+                    Please call us to schedule an appointment for a campus visit.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* School Information */}
+            <div className="space-y-6">
+              <Card>
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-semibold mb-6">Quick Information</h3>
+                  
+                  <div className="space-y-4">
+                    <div className="border-l-4 border-primary pl-4">
+                      <h4 className="font-semibold text-primary">Admission Enquiries</h4>
+                      <p className="text-gray-600">Contact us for admission process, requirements, and available seats.</p>
+                    </div>
+                    
+                    <div className="border-l-4 border-secondary pl-4">
+                      <h4 className="font-semibold text-primary">Academic Information</h4>
+                      <p className="text-gray-600">Learn about our curriculum, teaching methods, and academic programs.</p>
+                    </div>
+                    
+                    <div className="border-l-4 border-primary pl-4">
+                      <h4 className="font-semibold text-primary">School Events</h4>
+                      <p className="text-gray-600">Stay updated about school activities, celebrations, and important dates.</p>
+                    </div>
+                    
+                    <div className="border-l-4 border-secondary pl-4">
+                      <h4 className="font-semibold text-primary">General Queries</h4>
+                      <p className="text-gray-600">Any other questions about our school, facilities, or policies.</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -502,15 +687,15 @@ export default function Index() {
             Join Our School Family
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Give your child the best start in their educational journey. Contact us today to learn more about admissions.
+            Give your child the best start in their educational journey. Apply for admission today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8">
+            <Button size="lg" variant="secondary" className="text-lg px-8" onClick={() => handleNavClick('#admissions')}>
               Apply for Admission
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 border-white text-white hover:bg-white hover:text-primary">
-              <a href="#contact">Contact Us</a>
+              <button onClick={() => handleNavClick('#contact')}>Contact Us</button>
             </Button>
           </div>
         </div>
