@@ -84,12 +84,18 @@ export default function Header() {
               Gallery
             </button>
             <button 
+              onClick={() => handleNavClick('#admissions')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Admissions
+            </button>
+            <button 
               onClick={() => handleNavClick('#contact')} 
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Contact
             </button>
-            <Button>Apply Now</Button>
+            <Button onClick={() => handleNavClick('#admissions')}>Apply Now</Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -136,12 +142,18 @@ export default function Header() {
                 Gallery
               </button>
               <button 
+                onClick={() => handleNavClick('#admissions')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
+              >
+                Admissions
+              </button>
+              <button 
                 onClick={() => handleNavClick('#contact')} 
                 className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Contact
               </button>
-              <Button className="w-fit">Apply Now</Button>
+              <Button className="w-fit" onClick={() => handleNavClick('#admissions')}>Apply Now</Button>
             </div>
           </nav>
         )}
