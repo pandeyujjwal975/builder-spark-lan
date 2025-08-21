@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(href.slice(1));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <header className="bg-white shadow-lg">
+    <header className="bg-white shadow-lg fixed w-full top-0 z-50">
       {/* Top Bar */}
       <div className="bg-primary text-primary-foreground py-2">
         <div className="container mx-auto px-4">
@@ -34,7 +41,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and School Name */}
-          <Link to="/" className="flex items-center gap-3">
+          <button onClick={() => handleNavClick('#home')} className="flex items-center gap-3">
             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">
               LA
             </div>
@@ -42,28 +49,46 @@ export default function Header() {
               <h1 className="text-2xl font-bold text-primary">Little Angel</h1>
               <p className="text-sm text-muted-foreground">Public School</p>
             </div>
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">
+            <button 
+              onClick={() => handleNavClick('#home')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
               Home
-            </Link>
-            <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">
+            </button>
+            <button 
+              onClick={() => handleNavClick('#about')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
               About
-            </Link>
-            <Link to="/academics" className="text-foreground hover:text-primary transition-colors font-medium">
+            </button>
+            <button 
+              onClick={() => handleNavClick('#academics')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
               Academics
-            </Link>
-            <Link to="/admissions" className="text-foreground hover:text-primary transition-colors font-medium">
-              Admissions
-            </Link>
-            <Link to="/facilities" className="text-foreground hover:text-primary transition-colors font-medium">
+            </button>
+            <button 
+              onClick={() => handleNavClick('#facilities')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
               Facilities
-            </Link>
-            <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            </button>
+            <button 
+              onClick={() => handleNavClick('#gallery')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Gallery
+            </button>
+            <button 
+              onClick={() => handleNavClick('#contact')} 
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
               Contact
-            </Link>
+            </button>
             <Button>Apply Now</Button>
           </nav>
 
@@ -80,48 +105,42 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t pt-4">
             <div className="flex flex-col gap-4">
-              <Link 
-                to="/" 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => handleNavClick('#home')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Home
-              </Link>
-              <Link 
-                to="/about" 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('#about')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 About
-              </Link>
-              <Link 
-                to="/academics" 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('#academics')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Academics
-              </Link>
-              <Link 
-                to="/admissions" 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Admissions
-              </Link>
-              <Link 
-                to="/facilities" 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('#facilities')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Facilities
-              </Link>
-              <Link 
-                to="/contact" 
-                className="text-foreground hover:text-primary transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavClick('#gallery')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
+              >
+                Gallery
+              </button>
+              <button 
+                onClick={() => handleNavClick('#contact')} 
+                className="text-left text-foreground hover:text-primary transition-colors font-medium"
               >
                 Contact
-              </Link>
+              </button>
               <Button className="w-fit">Apply Now</Button>
             </div>
           </nav>
