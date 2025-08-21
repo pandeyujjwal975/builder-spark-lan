@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
+  const handleNavClick = (href: string) => {
+    const element = document.getElementById(href.slice(1));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
@@ -32,25 +38,59 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-sm opacity-90 hover:opacity-100 transition-opacity">About Us</Link></li>
-              <li><Link to="/academics" className="text-sm opacity-90 hover:opacity-100 transition-opacity">Academics</Link></li>
-              <li><Link to="/admissions" className="text-sm opacity-90 hover:opacity-100 transition-opacity">Admissions</Link></li>
-              <li><Link to="/facilities" className="text-sm opacity-90 hover:opacity-100 transition-opacity">Facilities</Link></li>
-              <li><Link to="/gallery" className="text-sm opacity-90 hover:opacity-100 transition-opacity">Gallery</Link></li>
-              <li><Link to="/events" className="text-sm opacity-90 hover:opacity-100 transition-opacity">Events</Link></li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('#about')} 
+                  className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
+                >
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('#academics')} 
+                  className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
+                >
+                  Academics
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('#facilities')} 
+                  className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
+                >
+                  Facilities
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('#gallery')} 
+                  className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
+                >
+                  Gallery
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('#contact')} 
+                  className="text-sm opacity-90 hover:opacity-100 transition-opacity text-left"
+                >
+                  Contact
+                </button>
+              </li>
             </ul>
           </div>
 
           {/* Academics */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Academics</h4>
+            <h4 className="text-lg font-semibold mb-4">Our Programs</h4>
             <ul className="space-y-2">
-              <li><span className="text-sm opacity-90">Primary School</span></li>
-              <li><span className="text-sm opacity-90">Middle School</span></li>
-              <li><span className="text-sm opacity-90">High School</span></li>
-              <li><span className="text-sm opacity-90">Science Lab</span></li>
-              <li><span className="text-sm opacity-90">Computer Lab</span></li>
+              <li><span className="text-sm opacity-90">Nursery</span></li>
+              <li><span className="text-sm opacity-90">Kindergarten</span></li>
+              <li><span className="text-sm opacity-90">Primary (I-V)</span></li>
+              <li><span className="text-sm opacity-90">Middle (VI-VIII)</span></li>
               <li><span className="text-sm opacity-90">Library</span></li>
+              <li><span className="text-sm opacity-90">Art & Music</span></li>
             </ul>
           </div>
 
